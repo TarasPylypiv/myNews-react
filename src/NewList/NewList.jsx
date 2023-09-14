@@ -1,14 +1,16 @@
 import NewsItem from '../components/NewsItem/NewsItem';
+import withSkeleton from '../helpers/hocs/withSkeleton';
 import styles from './styles.module.css';
 
 const NewList = ({news}) => {
     return (
         <ul className={styles.list}>
-          {news.map(i => (
-            <NewsItem key={i.id} item={i}/>
+          {news.map(item => (
+            <NewsItem key={item.id} item={item}/>
           ))}
         </ul>
     );
-}
+};
+const NewsListWithSkeleton = withSkeleton(NewList, 'item', 10)
  
-export default NewList;
+export default NewsListWithSkeleton;
